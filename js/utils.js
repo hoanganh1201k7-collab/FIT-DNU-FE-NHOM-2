@@ -7,6 +7,13 @@ function formatDate(dateStr) {
 function calculateTotalCalories(duration, calPerMin) {
     return (Number(duration) * Number(calPerMin)) || 0;
 }
+function calculateTotalCalories(duration, calPerMin) {
+    return (Number(duration) * Number(calPerMin)) || 0;
+}
+
+function calculateTotalCalories(duration, calPerMin) {
+    return (Number(duration) * Number(calPerMin)) || 0;
+}
 
 function createWorkoutCardHTML(workout, exerciseDetails) {
     const totalCal = calculateTotalCalories(workout.duration, exerciseDetails.cal_per_min);

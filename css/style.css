@@ -1,26 +1,24 @@
-/* --- DESIGN SYSTEM VARIABLES --- */
 :root {
     --bs-blue: #0d6efd;
     --bs-dark: #212529;
     --bs-light: #f8f9fa;
     --gradient-primary: linear-gradient(135deg, #0d6efd 0%, #6f42c1 100%);
-    --neon-blue: #00f2fe;
-    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-bg: rgba(255, 255, 255, 0.85);
     --glass-border: rgba(255, 255, 255, 0.6);
-    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.03);
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
     --shadow-hover: 0 20px 40px rgba(13, 110, 253, 0.12);
     --radius-xl: 24px;
     --radius-lg: 16px;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', 'Inter', sans-serif;
     background-color: var(--bs-light);
     color: var(--bs-dark);
     overflow-x: hidden;
 }
 
-/* --- BACKGROUND BLUR SHAPES --- */
+/* Background Blur Shapes */
 .bg-shape {
     position: absolute;
     filter: blur(100px);
@@ -37,34 +35,32 @@ body {
     100% { transform: translate(50px, 50px) scale(1.1); }
 }
 
-/* --- NAVBAR GLASSMORPHISM --- */
+/* Navbar */
 .navbar-glass {
     background: transparent;
     transition: all 0.4s ease;
 }
 .navbar-glass.scrolled {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
 
-/* --- PREMIUM CARDS & HOVER LIFT --- */
+/* Premium Cards */
 .premium-card {
     background: var(--glass-bg);
     backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-soft);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
-.premium-card:hover {
+.premium-card.hover-lift:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-hover);
 }
 
-/* --- GRADIENT BUTTONS & TEXT --- */
+/* Utilities */
 .text-gradient {
     background: var(--gradient-primary);
     -webkit-background-clip: text;
@@ -84,7 +80,7 @@ body {
     color: white;
 }
 
-/* --- CIRCULAR PROGRESS & CSS CHARTS --- */
+/* Circular Progress */
 .circular-progress {
     width: 120px;
     height: 120px;
@@ -106,34 +102,9 @@ body {
 }
 .circular-value { position: relative; font-weight: 700; font-size: 1.5rem; }
 
-/* --- SKELETON LOADING --- */
-.skeleton {
-    background: #e2e5e7;
-    background: linear-gradient(90deg, #e2e5e7 25%, #f1f3f5 50%, #e2e5e7 75%);
-    background-size: 200% 100%;
-    animation: skeleton-loading 1.5s infinite linear;
-    border-radius: 8px;
-}
-@keyframes skeleton-loading {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-}
-
-/* --- ADMIN SPECIFIC & FLOATING LABELS --- */
+/* Admin Sidebar & Tables */
 .admin-sidebar {
     background: var(--bs-dark);
     min-height: 100vh;
-    transition: all 0.3s;
 }
-.table-modern th {
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    color: #6c757d;
-    border-bottom: 2px solid #dee2e6;
-}
-.table-modern td { vertical-align: middle; font-weight: 500; }
-.form-floating > .form-control:focus ~ label { color: var(--bs-blue); }
-
-/* --- BADGES --- */
-.badge-muscle { padding: 6px 12px; font-weight: 600; letter-spacing: 0.5px; }
+.table-hover tbody tr { transition: background-color 0.2s; cursor: default; }

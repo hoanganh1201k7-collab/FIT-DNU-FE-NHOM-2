@@ -15,33 +15,26 @@
 
     <nav class="navbar navbar-expand-lg fixed-top navbar-glass py-3" id="mainNav">
         <div class="container">
-            <a class="navbar-brand fw-bold fs-3" style="font-family: 'Poppins', sans-serif;" href="#">
-                <i class="bi bi-activity text-primary"></i> FitTrack
-            </a>
-            <div class="d-flex align-items-center">
-                <a href="admin.html" class="btn btn-outline-dark rounded-pill px-4 fw-semibold border-2 d-none d-sm-block">Quản trị viên</a>
-            </div>
+            <a class="navbar-brand fw-bold fs-3" href="#"><i class="bi bi-activity text-primary"></i> FitTrack</a>
+            <a href="admin.html" class="btn btn-outline-dark rounded-pill px-4 fw-semibold border-2 d-none d-sm-block">Quản trị viên</a>
         </div>
     </nav>
 
     <section class="container pt-5 mt-5">
         <div class="row align-items-center mt-4 mb-5 pb-4 border-bottom border-light">
             <div class="col-lg-7 text-center text-lg-start mb-5 mb-lg-0">
-                <h1 class="display-3 fw-bolder mb-3" style="font-family: 'Poppins', sans-serif; line-height: 1.2;">
-                    Định Hình Lại <br><span class="text-gradient">Phiên Bản Tốt Nhất.</span>
-                </h1>
+                <h1 class="display-3 fw-bolder mb-3">Định Hình Lại <br><span class="text-gradient">Phiên Bản Tốt Nhất.</span></h1>
                 <p class="lead text-secondary mb-4 col-lg-10">Theo dõi tiến trình, phân tích dữ liệu và vượt qua mọi giới hạn thể chất của bạn với FitTrack.</p>
                 <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
-                    <button class="btn btn-gradient px-5 py-3 fs-5" onclick="document.getElementById('explore').scrollIntoView({behavior:'smooth'})">Bắt đầu ngay</button>
-                    <button class="btn btn-light rounded-pill px-5 py-3 fs-5 fw-semibold shadow-sm">Xem thống kê</button>
+                    <button class="btn btn-gradient px-5 py-3 fs-5" onclick="document.getElementById('formSection').scrollIntoView({behavior:'smooth'})">Bắt đầu ngay</button>
+                    <button class="btn btn-light rounded-pill px-5 py-3 fs-5 fw-semibold shadow-sm" onclick="document.getElementById('explore').scrollIntoView({behavior:'smooth'})">Xem thống kê</button>
                 </div>
             </div>
-            
             <div class="col-lg-5">
                 <div class="premium-card p-4">
                     <h5 class="fw-bold mb-4">Tiến Độ Tuần Này</h5>
                     <div class="d-flex align-items-center gap-4 mb-4">
-                        <div class="circular-progress" id="weeklyProgress" style="background: conic-gradient(var(--bs-blue) 0%, #e9ecef 0%);">
+                        <div class="circular-progress" id="weeklyProgress">
                             <span class="circular-value text-dark">0%</span>
                         </div>
                         <div>
@@ -52,14 +45,12 @@
                     <div class="row g-3 text-center">
                         <div class="col-6">
                             <div class="p-3 bg-light rounded-4">
-                                <i class="bi bi-lightning-fill text-warning fs-4"></i>
                                 <h4 class="fw-bold mt-2 mb-0" id="statWorkouts">0</h4>
                                 <small class="text-muted fw-semibold">Buổi tập</small>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="p-3 bg-light rounded-4">
-                                <i class="bi bi-stopwatch text-info fs-4"></i>
                                 <h4 class="fw-bold mt-2 mb-0"><span id="statDuration">0</span>h</h4>
                                 <small class="text-muted fw-semibold">Thời lượng</small>
                             </div>
@@ -70,15 +61,46 @@
         </div>
     </section>
 
+    <section class="container mb-5" id="formSection">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="premium-card p-4 p-md-5 shadow-lg">
+                    <h4 class="fw-bold mb-4"><i class="bi bi-pencil-square text-primary me-2"></i>Ghi lại buổi tập hôm nay</h4>
+                    <form id="formAddWorkout">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label text-muted fw-semibold">Ngày tập</label>
+                                <input type="date" class="form-control form-control-lg bg-light border-0" id="workoutDate" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-muted fw-semibold">Bài tập</label>
+                                <select class="form-select form-control-lg bg-light border-0" id="workoutExercise" required>
+                                    <option value="">-- Đang tải... --</option>
+                                </select>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label text-muted fw-semibold">Thời gian (phút)</label>
+                                <input type="number" class="form-control form-control-lg bg-light border-0" id="workoutDuration" placeholder="Ví dụ: 30" required min="1">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label text-muted fw-semibold">Ghi chú thành tích</label>
+                                <textarea class="form-control bg-light border-0" id="workoutNote" rows="2" placeholder="Bạn cảm thấy thế nào?"></textarea>
+                            </div>
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn btn-gradient w-100 py-3 fs-5">Lưu Buổi Tập</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="container mb-5 pb-5" id="explore">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
             <h3 class="fw-bolder mb-0">Lịch sử hoạt động</h3>
-            
             <div class="d-flex gap-2 flex-wrap">
-                <div class="input-group shadow-sm rounded-pill overflow-hidden" style="width: 250px; border: 1px solid #dee2e6;">
-                    <span class="input-group-text bg-white border-0"><i class="bi bi-search text-muted"></i></span>
-                    <input type="text" id="searchInput" class="form-control border-0 bg-white" placeholder="Tìm bài tập...">
-                </div>
+                <input type="text" id="searchInput" class="form-control rounded-pill shadow-sm border-0 px-4" placeholder="Tìm kiếm..." style="width: 250px;">
                 <select id="filterMuscle" class="form-select rounded-pill shadow-sm border-0 fw-medium" style="width: 160px;">
                     <option value="all">Tất cả nhóm cơ</option>
                     <option value="Cardio">Cardio</option>
@@ -90,35 +112,11 @@
                 </select>
             </div>
         </div>
-
-        <div id="loadingState" class="row g-4 mb-5">
-            </div>
-        
-        <div id="emptyState" class="text-center py-5 my-5" style="display: none;">
-            <i class="bi bi-journal-x display-1 text-muted opacity-50"></i>
-            <h4 class="fw-bold mt-3">Chưa có dữ liệu</h4>
-            <p class="text-secondary">Bạn chưa ghi nhận buổi tập nào hoặc không tìm thấy kết quả.</p>
-        </div>
-
-        <div id="errorState" class="alert alert-danger rounded-4 py-4 fw-medium shadow-sm" style="display: none;">
-            <i class="bi bi-exclamation-triangle-fill me-2"></i> Không thể kết nối tới máy chủ. Vui lòng kiểm tra API.
-        </div>
-
-        <div class="row g-4" id="workoutGrid" style="display: none;"></div>
+        <div class="row g-4" id="workoutGrid"></div>
     </section>
 
-    <footer class="bg-white border-top py-5">
-        <div class="container text-center">
-            <h4 class="fw-bolder"><i class="bi bi-activity text-primary"></i> FitTrack</h4>
-            <p class="text-muted mb-4">Nền tảng quản lý sức khỏe cá nhân cao cấp. <br>Đồ án sinh viên Đại học Đại Nam.</p>
-            <div class="d-flex justify-content-center gap-3">
-                <a href="#" class="btn btn-light rounded-circle text-dark fs-5"><i class="bi bi-github"></i></a>
-                <a href="#" class="btn btn-light rounded-circle text-primary fs-5"><i class="bi bi-facebook"></i></a>
-            </div>
-        </div>
-    </footer>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/utils.js"></script>
     <script src="js/api.js"></script>
     <script src="js/main.js"></script>
 </body>

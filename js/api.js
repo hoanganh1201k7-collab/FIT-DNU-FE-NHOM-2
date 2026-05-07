@@ -1,34 +1,15 @@
-const BASE_URL = 'https://69fbf37dfce564e25917170d.mockapi.io/api/v1'; // Thay ID của bạn
+const BASE_URL = 'https://69fbf37dfce564e25917170d.mockapi.io/api/v1';
 
 const API = {
-    getExercises: async () => {
-        const res = await fetch(`${BASE_URL}/exercises`);
-        return await res.json();
-    },
-    getWorkouts: async () => {
-        const res = await fetch(`${BASE_URL}/workouts`);
-        return await res.json();
-    },
-    // Thêm mới (POST)
-    addWorkout: async (data) => {
-        const res = await fetch(`${BASE_URL}/workouts`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        });
-        return await res.json();
-    },
-    // Chỉnh sửa (PUT)
-    updateWorkout: async (id, data) => {
-        const res = await fetch(`${BASE_URL}/workouts/${id}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        });
-        return await res.json();
-    },
-    // Xóa (DELETE)
-    deleteWorkout: async (id) => {
-        await fetch(`${BASE_URL}/workouts/${id}`, { method: 'DELETE' });
-    }
+    // CRUD Exercises (Danh mục bài tập)
+    getExercises: async () => (await fetch(`${BASE_URL}/exercises`)).json(),
+    addExercise: async (data) => (await fetch(`${BASE_URL}/exercises`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data) })).json(),
+    updateExercise: async (id, data) => (await fetch(`${BASE_URL}/exercises/${id}`, { method: 'PUT', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data) })).json(),
+    deleteExercise: async (id) => await fetch(`${BASE_URL}/exercises/${id}`, { method: 'DELETE' }),
+
+    // CRUD Workouts (Nhật ký tập luyện)
+    getWorkouts: async () => (await fetch(`${BASE_URL}/workouts`)).json(),
+    addWorkout: async (data) => (await fetch(`${BASE_URL}/workouts`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data) })).json(),
+    updateWorkout: async (id, data) => (await fetch(`${BASE_URL}/workouts/${id}`, { method: 'PUT', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data) })).json(),
+    deleteWorkout: async (id) => await fetch(`${BASE_URL}/workouts/${id}`, { method: 'DELETE' })
 };
