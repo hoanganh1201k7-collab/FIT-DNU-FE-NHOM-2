@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack Admin - Quản lý Nhật ký</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light">
+    <div class="toast-container position-fixed top-0 end-0 p-4" style="z-index: 1100">
+        <div id="actionToast" class="toast align-items-center text-bg-dark border-0 rounded-3 shadow-lg" role="alert">
+            <div class="d-flex">
+                <div class="toast-body fw-medium" id="toastMessage">Thành công!</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex flex-column flex-md-row" style="min-height: 100vh;">
+        <div class="admin-sidebar p-4 d-none d-md-flex flex-column bg-dark text-white" style="width: 280px;">
+            <h4 class="fw-bold mb-5"><i class="bi bi-activity text-primary"></i> FitTrack.</h4>
+            <ul class="nav nav-pills flex-column gap-2">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active bg-primary"><i class="bi bi-calendar-check me-2"></i> Nhật ký tập luyện</a>
+                </li>
+                <li class="nav-item mt-5 pt-5 border-top border-secondary">
+                    <a href="index.html" class="nav-link text-white-50"><i class="bi bi-box-arrow-left me-2"></i> Về trang khách</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="flex-grow-1 p-4 p-lg-5">
+            <div class="d-flex justify-content-between align-items-center mb-5">
+                <div>
+                    <h3 class="fw-bolder mb-1">Quản lý Nhật ký</h3>
+                    <p class="text-muted mb-0">Hệ thống quản trị dữ liệu của Nguyễn Hoàng Anh</p>
+                </div>
+                <button class="btn btn-primary rounded-pill px-4 fw-bold" id="btnOpenAddModal">
+                    <i class="bi bi-plus-lg me-2"></i>Thêm Buổi Tập
+                </button>
+            </div>
+
+            <div class="premium-card p-0 bg-white shadow-sm border-0 rounded-4 overflow-hidden">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light">
+                            <tr>
+                                <th class="px-4 py-3">Ngày</th>
+                                <th>Bài tập</th>
+                                <th>Nhóm cơ</th>
+                                <th>Thời lượng</th>
+                                <th>Tổng Calo</th>
+                                <th class="px-4 text-end">Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminWorkoutTableBody">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="workoutModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 border-0 shadow-lg">
+                <div class="modal-header">
+                    <h5 class="fw-bold" id="modalTitle">Ghi nhận buổi tập</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="workoutForm">
+                        <input type="hidden" id="editId">
+                        <div class="form-floating mb-3">
+                            <input type="date" class="form-control" id="workoutDate" required>
+                            <label>Ngày tập</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="workoutExercise" required>
+                                <option value="">Chọn bài tập...</option>
+                            </select>
+                            <label>Loại bài tập</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control" id="workoutDuration" placeholder="30" required min="1">
+                            <label>Thời lượng (phút)</label>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <textarea class="form-control" id="workoutNote" style="height: 100px" placeholder="Ghi chú"></textarea>
+                            <label>Ghi chú bài tập</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 py-3 rounded-pill fw-bold" id="btnSubmit">Lưu Dữ Liệu</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
