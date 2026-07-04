@@ -1,0 +1,706 @@
+/* =====================================
+   BIẾN MÀU SẮC TOÀN CỤC
+===================================== */
+:root {
+    --primary-blue: #2563eb;
+    --primary-green: #10b981;
+    --light-bg: #f1f5f9;
+    --glass-bg: rgba(255, 255, 255, 0.18);
+    --glass-border: rgba(255, 255, 255, 0.35);
+    --text-dark: #1e293b;
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", "Poppins", Roboto, Arial, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+}
+
+/* =====================================
+   TRANG ĐĂNG NHẬP (INDEX.HTML)
+===================================== */
+.login-page {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 45%, #064e3b 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 12s ease infinite;
+    position: relative;
+    padding: 20px;
+    min-height: 100vh;
+    width: 100%;
+    overflow-y: auto;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.login-page::before,
+.login-page::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.35;
+    z-index: 0;
+}
+
+.login-page::before {
+    width: 350px;
+    height: 350px;
+    background: var(--primary-green);
+    top: -80px;
+    left: -80px;
+    animation: floatBlob 10s ease-in-out infinite;
+}
+
+.login-page::after {
+    width: 400px;
+    height: 400px;
+    background: var(--primary-blue);
+    bottom: -100px;
+    right: -100px;
+    animation: floatBlob 14s ease-in-out infinite reverse;
+}
+
+@keyframes floatBlob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(40px, 30px) scale(1.1); }
+}
+
+.login-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    padding: 48px 36px;
+    animation: fadeSlideUp 0.8s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.login-logo {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+    border-radius: 18px;
+    font-size: 32px;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+    animation: pulseLogo 3s ease-in-out infinite;
+}
+
+@keyframes pulseLogo {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+}
+
+.login-title {
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.login-subtitle {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+}
+
+.login-card .form-control {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    border-radius: 14px;
+    padding: 12px 16px;
+}
+
+.login-card .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.login-card .form-control:focus {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+    color: #fff;
+}
+
+.btn-fit-primary {
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 14px;
+    padding: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-fit-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.45);
+    color: #fff;
+}
+
+.input-group-glass {
+    position: relative;
+}
+
+.input-group-glass .toggle-password {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+}
+
+/* =====================================
+   LAYOUT CHUNG TRANG USER / ADMIN
+===================================== */
+.app-navbar {
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    padding: 14px 0;
+}
+
+.app-navbar .brand-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+    color: #fff;
+    font-size: 20px;
+}
+
+.app-navbar .brand-text {
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--text-dark);
+}
+
+.btn-logout {
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+/* =====================================
+   HERO SECTION (USER)
+===================================== */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #1d4ed8 50%, var(--primary-green) 100%);
+    border-radius: var(--radius-xl);
+    color: #fff;
+    padding: 36px 32px;
+    margin: 24px 0;
+    position: relative;
+    overflow: hidden;
+    animation: fadeSlideUp 0.6s ease forwards;
+}
+
+.hero-section::after {
+    content: "";
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    right: -60px;
+    top: -60px;
+}
+
+.hero-section h2 {
+    font-weight: 800;
+}
+
+.hero-stat {
+    text-align: center;
+}
+
+.hero-stat .value {
+    font-size: 1.9rem;
+    font-weight: 800;
+}
+
+.hero-stat .label {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* =====================================
+   DASHBOARD CARDS THỐNG KÊ
+===================================== */
+.stat-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 22px;
+    height: 100%;
+    border: 1px solid rgba(0,0,0,0.03);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    animation: fadeSlideUp 0.6s ease forwards;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+.stat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+}
+
+.stat-card .icon-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 14px;
+}
+
+.icon-blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.icon-green { background: linear-gradient(135deg, #34d399, #10b981); }
+.icon-orange { background: linear-gradient(135deg, #fbbf24, #f59e0b); }
+.icon-purple { background: linear-gradient(135deg, #a78bfa, #7c3aed); }
+
+.stat-card .stat-value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.stat-card .stat-label {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+/* Stagger animation cho các stat card */
+.stat-card:nth-child(1) { animation-delay: 0.05s; }
+.stat-card:nth-child(2) { animation-delay: 0.15s; }
+.stat-card:nth-child(3) { animation-delay: 0.25s; }
+.stat-card:nth-child(4) { animation-delay: 0.35s; }
+
+/* =====================================
+   BỘ LỌC TÌM KIẾM
+===================================== */
+.filter-bar {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 18px;
+    margin: 24px 0;
+}
+
+.filter-bar .form-control,
+.filter-bar .form-select {
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.filter-bar .form-control:focus,
+.filter-bar .form-select:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* =====================================
+   WORKOUT CARDS
+===================================== */
+.workout-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(0,0,0,0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    height: 100%;
+    animation: fadeSlideUp 0.5s ease forwards;
+    opacity: 0;
+}
+
+.workout-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+}
+
+.workout-card .workout-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.workout-card:hover .workout-img {
+    transform: scale(1.06);
+}
+
+.workout-card .card-body {
+    padding: 18px;
+}
+
+.workout-card .muscle-badge {
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary-blue);
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 0.78rem;
+}
+
+.workout-card .workout-meta {
+    color: #64748b;
+    font-size: 0.85rem;
+}
+
+/* =====================================
+   PROGRESS BAR TIẾN ĐỘ
+===================================== */
+.progress-section {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 24px;
+    margin: 24px 0;
+}
+
+.progress-section .progress {
+    height: 14px;
+    border-radius: 999px;
+    background: #e2e8f0;
+    overflow: hidden;
+}
+
+.progress-section .progress-bar {
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+    transition: width 1.2s ease;
+    border-radius: 999px;
+}
+
+.progress-item {
+    margin-bottom: 18px;
+}
+
+.progress-item .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+/* =====================================
+   SKELETON LOADING
+===================================== */
+.skeleton {
+    background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+    background-size: 200% 100%;
+    animation: skeletonShine 1.5s infinite;
+    border-radius: 8px;
+}
+
+@keyframes skeletonShine {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.skeleton-card {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+}
+
+.skeleton-img {
+    width: 100%;
+    height: 180px;
+    border-radius: 0;
+}
+
+.skeleton-line {
+    height: 14px;
+}
+
+/* =====================================
+   SPINNER LOADING
+===================================== */
+.spinner-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0;
+}
+
+/* =====================================
+   ADMIN DASHBOARD
+===================================== */
+.admin-table-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 22px;
+    margin: 24px 0;
+}
+
+.admin-table-card table img {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.admin-table-card .table thead th {
+    border-bottom: 2px solid #e2e8f0;
+    color: #475569;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.admin-table-card .table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.admin-table-card .table tbody tr:hover {
+    background: rgba(37, 99, 235, 0.04);
+}
+
+.btn-action {
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 0.85rem;
+}
+
+/* =====================================
+   FORM VALIDATION
+===================================== */
+.error-feedback {
+    color: #dc2626;
+    font-size: 0.8rem;
+    margin-top: 4px;
+    display: none;
+}
+
+.error-feedback.d-block {
+    display: block;
+}
+
+/* =====================================
+   ANIMATION DÙNG CHUNG
+===================================== */
+.fade-in {
+    animation: fadeSlideUp 0.6s ease forwards;
+}
+
+.slide-down {
+    display: none;
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+@media (max-width: 768px) {
+    .hero-stat .value { font-size: 1.4rem; }
+    .login-card { padding: 32px 24px; }
+    .hero-section { padding: 24px 20px; }
+}
+
+@media (max-width: 576px) {
+    .stat-card .stat-value { font-size: 1.4rem; }
+}
+
+
+
+/* =====================================
+   DARK MODE OVERRIDES
+===================================== */
+[data-theme="dark"] {
+    /* Cập nhật các biến CSS toàn cục */
+    --light-bg: #0f172a;
+    --text-dark: #f8fafc;
+    --glass-bg: rgba(15, 23, 42, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .app-navbar,
+[data-theme="dark"] .stat-card,
+[data-theme="dark"] .filter-bar,
+[data-theme="dark"] .workout-card,
+[data-theme="dark"] .progress-section,
+[data-theme="dark"] .admin-table-card,
+[data-theme="dark"] .modal-content,
+[data-theme="dark"] .bg-white {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: var(--text-dark) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .text-muted {
+    color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select {
+    background-color: #0f172a;
+    border-color: #334155;
+    color: #f8fafc;
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+    background-color: #1e293b;
+    color: #f8fafc;
+}
+
+[data-theme="dark"] .input-group-text {
+    background-color: #1e293b !important;
+    border-color: #334155;
+    color: #f8fafc;
+}
+
+[data-theme="dark"] .table {
+    color: #f8fafc;
+}
+
+[data-theme="dark"] .table thead th {
+    border-bottom-color: #334155;
+    color: #cbd5e1;
+}
+
+[data-theme="dark"] .table tbody tr:hover {
+    background: rgba(37, 99, 235, 0.15);
+}
+
+[data-theme="dark"] .table {
+    --bs-table-bg: transparent;
+    --bs-table-color: #f8fafc;
+    --bs-table-border-color: #334155;
+}
+[data-theme="dark"] .table th,
+[data-theme="dark"] .table td {
+    background-color: transparent !important;
+    color: #f8fafc !important;
+    border-bottom-color: #334155 !important;
+}
+[data-theme="dark"] .table tbody tr:hover td {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+[data-theme="dark"] .pagination .page-link {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: #cbd5e1 !important;
+}
+[data-theme="dark"] .pagination .page-item.active .page-link {
+    background-color: var(--primary-blue) !important;
+    border-color: var(--primary-blue) !important;
+    color: #fff !important;
+}
+[data-theme="dark"] .pagination .page-item.disabled .page-link {
+    background-color: #0f172a !important;
+    color: #64748b !important;
+    border-color: #334155 !important;
+}
+[data-theme="dark"] .nav-pills .nav-link {
+    color: #cbd5e1;
+}
+
+[data-theme="dark"] .nav-pills .nav-link.active {
+    background-color: var(--primary-blue) !important;
+    color: #ffffff !important;
+}
+/* =====================================
+   TỐI ƯU HÓA MÀU SẮC GIAO DIỆN TỐI (DARK MODE)
+===================================== */
+
+/* 1. Sửa màu chữ của Tiêu đề và Label */
+[data-theme="dark"] .form-label,
+[data-theme="dark"] .modal-title {
+    color: #f8fafc !important;
+}
+
+/* 2. Sửa màu nền và màu chữ của các ô Input nhập liệu */
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+    background-color: #0f172a !important;
+    border-color: var(--primary-blue) !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.25) !important;
+}
+
+[data-theme="dark"] .form-control::placeholder {
+    color: #94a3b8 !important;
+    opacity: 1;
+}
+
+[data-theme="dark"] .bg-light,
+[data-theme="dark"] .bg-white {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .table-light th {
+    background-color: #0f172a !important;
+    color: #f8fafc !important;
+    border-bottom-color: #334155 !important;
+}
+
+[data-theme="dark"] .table {
+    --bs-table-color: #f8fafc;
+    --bs-table-bg: transparent;
+    --bs-table-border-color: #334155;
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .text-dark {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] #exerciseSelectList tr:hover td {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+[data-theme="dark"] #exerciseSelectList tr.table-primary td {
+    background-color: rgba(37, 99, 235, 0.3) !important;
+    color: #ffffff !important;
+    border-color: transparent !important;
+}
